@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/31 12:01:33 by maboye            #+#    #+#              #
-#    Updated: 2019/07/31 13:04:05 by maboye           ###   ########.fr        #
+#    Updated: 2019/07/31 16:42:03 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ INCDIR	=	./includes
 OBJDIR	=	./obj
 
 # src / obj files
-SRC		=	main.c
+SRC		=	event.c \
+			fractol.c \
+			julia.c \
+			main.c \
+			mandelbrot.c \
+			utils.c
 INC		=	fractol.h
 
 OBJ		=	$(addprefix $(OBJDIR)/,$(SRC:.c=.o))
