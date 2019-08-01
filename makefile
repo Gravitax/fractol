@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/31 12:01:33 by maboye            #+#    #+#              #
-#    Updated: 2019/07/31 16:42:03 by maboye           ###   ########.fr        #
+#    Updated: 2019/08/01 16:58:31 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,10 @@ INCDIR	=	./includes
 OBJDIR	=	./obj
 
 # src / obj files
-SRC		=	event.c \
+SRC		=	burningship.c \
+			event.c \
 			fractol.c \
+			init.c \
 			julia.c \
 			main.c \
 			mandelbrot.c \
