@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:36:27 by maboye            #+#    #+#             */
-/*   Updated: 2019/08/05 16:10:52 by maboye           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:25:46 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 static void		mouse_menu(t_fractol *d)
 {
-	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 200, 0xFFFFFF, "MOUSE");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 200, 0xFFFFFF,
+			"MOUSE");
 	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 230, 0xFFFFFF,
-			"scroll up   : zoom");
+			"zoom      : scroll up");
 	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 250, 0xFFFFFF,
-			"scroll down : dezoom");
+			"dezoom    : scroll down");
 }
 
 static void		keyboard_menu(t_fractol *d)
@@ -32,7 +33,9 @@ static void		keyboard_menu(t_fractol *d)
 	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 390, 0xFFFFFF,
 			"iteration : [+] , [-]");
 	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 430, 0xFFFFFF,
-			"ESC       : quit");
+			"quit      : ESC");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 450, 0xFFFFFF,
+			"reset     : clear");
 }
 
 void			ft_menu(t_fractol *d)
@@ -52,7 +55,7 @@ void			ft_menu(t_fractol *d)
 	else if (d->fractal == 3)
 		buf = ft_strdup("Burningship");
 	else
-		buf = ft_strdup("Suce");
+		buf = ft_strdup("error");
 	mlx_string_put(d->mlx_ptr, d->win_ptr, WIDTH + 1, 140, 0xFFFFFF, buf);
 	keyboard_menu(d);
 	mouse_menu(d);

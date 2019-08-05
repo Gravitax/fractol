@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 16:55:16 by maboye            #+#    #+#             */
-/*   Updated: 2019/08/05 18:24:01 by maboye           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:43:19 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void		burningship_init(t_fractol *data)
 	data->max_i = 50;
 	data->x1 = -2.2;
 	data->y1 = -2.5;
-	data->zoom = WIDTH / (ft_absolute(data->x1) + ft_absolute(data->y1));
 	data->color = 265;
 }
 
@@ -27,7 +26,6 @@ static void		julia_init(t_fractol *data)
 	data->max_i = 50;
 	data->x1 = -2.0;
 	data->y1 = -2.0;
-	data->zoom = WIDTH / (ft_absolute(data->x1) + ft_absolute(data->y1));
 	data->color = 265;
 	data->c_r = 0.285;
 	data->c_i = 0.01;
@@ -38,7 +36,6 @@ static void		mandelbrot_init(t_fractol *data)
 	data->max_i = 50;
 	data->x1 = -2.5;
 	data->y1 = -1.3;
-	data->zoom = WIDTH / (ft_absolute(data->x1) + ft_absolute(data->y1));
 	data->color = 265;
 }
 
@@ -52,4 +49,5 @@ void			init(t_fractol *data)
 		burningship_init(data);
 	else
 		;
+	data->zoom = WIDTH / (ft_absolute(data->x1) + ft_absolute(data->y1));
 }

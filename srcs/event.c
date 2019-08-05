@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 15:04:56 by maboye            #+#    #+#             */
-/*   Updated: 2019/08/05 18:44:09 by maboye           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:44:21 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int				mouse_event(int button, int x, int y, void *param)
 	if (button == PREV || button == NEXT)
 		ft_switch(data, button, 1);
 	ft_maker(data, 1);
-	ft_printf(1, "button: %d\n x: %d, y: %d\n", button, x, y);
 	return (1);
 }
 
@@ -107,6 +106,5 @@ int				key_event(int key, void *param)
 	if (key == CLEAR)
 		init(data);
 	ft_maker(data, 1);
-	ft_printf(1, "key: %d\n", key);
 	return (1);
 }
