@@ -6,28 +6,25 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:49:17 by maboye            #+#    #+#             */
-/*   Updated: 2019/08/01 19:31:18 by maboye           ###   ########.fr       */
+/*   Updated: 2019/08/05 18:51:58 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <math.h>
-# include <mlx.h>
-# include <stdio.h>
+# include "math.h"
+# include "mlx.h"
+# include "pthread.h"
 # include <stdlib.h>
-# include <unistd.h>
-
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
 
 # include "../libft/libft.h"
 
-# define WIN_L  800
-# define WIN_H  600
-# define WIN_M  WIN_L + 300
+# define WIDTH	800
+# define WIN_M  WIDTH + 300
+
+# define THREAD_WIDTH	8
+# define THREAD_NUMBER	WIDTH / THREAD_WIDTH
 
 # define PREV	1
 # define NEXT	2
@@ -42,6 +39,7 @@
 # define A		0
 # define S		1
 # define D		2
+# define SPC	49
 # define MORE	69
 # define LESS	78
 # define LEFT	123
@@ -60,41 +58,45 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
-typedef struct  s_fractol
+typedef struct	s_fractol
 {
 	int			max_i;
 	int			i;
 	int			color;
+	int			julia;
 	int			fractal;
 	double		tmp;
 	double		x;
 	double		y;
-    double      x1;
-    double      y1;
+	double		y_max;
+	double		x1;
+	double		y1;
 	double		c_r;
 	double		c_i;
 	double		z_r;
 	double		z_i;
 	double		zoom;
-    void		*mlx_ptr;
+	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
-    t_img       *img;
-}               t_fractol;
+	t_img		*img;
+}				t_fractol;
 
-void	        init(t_fractol *data);
-void			burningship(t_fractol *data);
-void            julia(t_fractol *data);
-void            mandelbrot(t_fractol *data);
+void			init(t_fractol *data);
+void			burningship_pthread(t_fractol *data);
+void			julia_pthread(t_fractol *data);
+void			mandelbrot_pthread(t_fractol *data);
 
+int				julia_event(int x, int y, void *param);
 int				key_event(int key, void *param);
 int				mouse_event(int button, int x, int y, void *param);
-void            fractol(int key);
-char            *str_tolower(char *str);
+void			fractol(int key);
+char			*str_tolower(char *str);
 
-void            ft_error(t_fractol *data, char *str, int fd);
-void            ft_freestruct(t_fractol **data);
-void	        ft_maker(t_fractol *data, int choose);
-void		    ft_putpixel(t_fractol *data, int x, int y, int color);
+void			ft_error(t_fractol *data, char *str, int fd);
+void			ft_freestruct(t_fractol **data);
+void			ft_maker(t_fractol *data, int choose);
+void			ft_menu(t_fractol *d);
+void			ft_putpixel(t_fractol *data, int x, int y, int color);
 
 #endif

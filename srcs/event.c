@@ -6,11 +6,18 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 15:04:56 by maboye            #+#    #+#             */
-/*   Updated: 2019/08/01 19:38:04 by maboye           ###   ########.fr       */
+/*   Updated: 2019/08/05 18:44:09 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+// if (a == e->i_max)
+// 	return (e->color_max);
+// r = (a * 5) * e->color_value;
+// g = (255 - (a * 10)) * e->color_value;
+// b = (255 - (a * 2)) * e->color_value;
+// c = (r << 16) + (g << 8) + b;
 
 static void		ft_color(t_fractol *data, int key)
 {
@@ -19,7 +26,7 @@ static void		ft_color(t_fractol *data, int key)
 	if (key == B)
 		data->color = 0x0000FF;
 	if (key == UP || key == DOWN)
-		data->color += (key == UP ? 1 : -1);
+		data->color += (key == UP ? 10 : -10);
 	if (data->color < 0)
 		data->color = 0xFFFFFF;
 }
@@ -46,8 +53,8 @@ static void		ft_switch(t_fractol *data, int key, int choose)
 	else
 	{
 		data->max_i += (key == MORE ? 25 : -25);
-		if (data->max_i < 25 || data->max_i > 250)
-			data->max_i = data->max_i < 25 ? 25 : 250;
+		if (data->max_i < 25 || data->max_i > 200)
+			data->max_i = data->max_i < 25 ? 25 : 200;
 	}
 }
 
@@ -64,7 +71,7 @@ static void		ft_zoom(int button, int x, int y, t_fractol *data)
 
 int				mouse_event(int button, int x, int y, void *param)
 {
-	t_fractol   *data;
+	t_fractol	*data;
 
 	data = (t_fractol *)param;
 	if (button == ZDOWN || button == ZUP)
@@ -78,7 +85,7 @@ int				mouse_event(int button, int x, int y, void *param)
 
 int				key_event(int key, void *param)
 {
-    t_fractol   *data;
+	t_fractol	*data;
 
 	data = (t_fractol *)param;
 	if (key == ESC)
@@ -95,9 +102,11 @@ int				key_event(int key, void *param)
 		ft_switch(data, key, 2);
 	if (key == DOWN || key == UP || key == R || key == G || key == B)
 		ft_color(data, key);
+	if (key == SPC)
+		data->julia = -data->julia;
 	if (key == CLEAR)
 		init(data);
 	ft_maker(data, 1);
 	ft_printf(1, "key: %d\n", key);
-    return (1);
+	return (1);
 }

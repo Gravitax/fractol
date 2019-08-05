@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/31 12:01:33 by maboye            #+#    #+#              #
-#    Updated: 2019/08/01 16:58:31 by maboye           ###   ########.fr        #
+#    Updated: 2019/08/02 13:36:24 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC		=	burningship.c \
 			julia.c \
 			main.c \
 			mandelbrot.c \
+			menu.c \
 			utils.c
 INC		=	fractol.h
 
